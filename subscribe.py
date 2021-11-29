@@ -43,6 +43,10 @@ def on_message(client, userdata, msg):
         print("Value: {}".format(payload))
         print("Timestamp: {}".format(ts))
 
+    ###############################################
+    # TODO - Add control for the lights here!!!
+    ###############################################
+
     # print("Disconnecting...")
     # client.disconnect()
 
