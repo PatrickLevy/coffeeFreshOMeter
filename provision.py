@@ -23,7 +23,7 @@ except FileNotFoundError as exc:
     exit()
 
 print("\nUsing IoT Connector ID: {}".format(connector_id))
-print("\nUsing Device ID: {}".format(connector_id))
+print("\nUsing Device ID: {}".format(device_id))
 
 host = "{}.m2.exosite-staging.com".format(connector_id)
 cert = "./Murano_Selfsigned_Root_CA.cer"
