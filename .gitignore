@@ -4,4 +4,5 @@ DigiCertGlobalRootCA.cer
 
 # device
 connector_id.txt
+device_id.txt
 token.txt
