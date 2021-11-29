@@ -1,1 +1,7 @@
+# certs
 Murano_Selfsigned_Root_CA.cer
+DigiCertGlobalRootCA.cer
+
+# device
+connector_id.txt
+token.txt

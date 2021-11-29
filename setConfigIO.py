@@ -2,6 +2,7 @@ from paho.mqtt import client as mqtt
 import ssl
 import logging
 import time
+import json
 
 # logging.basicConfig(level=logging.DEBUG)
 
@@ -20,21 +21,13 @@ host = "{}.m2.exosite-staging.com".format(connector_id)
 cert = "./Murano_Selfsigned_Root_CA.cer"
 
 def on_connect(client, userdata, flags, rc):
-    # Example resource: 'data_in'
-    resource = input("Resource? ")
-    # topic = "$resource/" + resource
-    topic = "$resource/" + resource
-
-    # Example value: {"hello":"world"}
-    value = input("Value? ")
+    topic = "$resource/config_io"
+    value = '{"channels": {"brewing_status": {"display_name": "Brewing Status","description": "","properties": {"data_type": "BOOLEAN","controle": true}}}}'
 
     print("Publishing value '{}' to topic '{}'".format(value, topic))
     client.publish(topic, value, qos=0)
 
     print("Done! Disconnecting...")
-
-    # time.sleep(10)
-
     client.disconnect()
 
 def on_message(client, userdata, msg):

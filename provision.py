@@ -18,6 +18,7 @@ print("\nUsing IoT Connector ID: {}".format(connector_id))
 device_id = input("Device ID? ")
 host = "{}.m2.exosite-staging.com".format(connector_id)
 cert = "./Murano_Selfsigned_Root_CA.cer"
+# cert = "./DigiCertGlobalRootCA.cer"
 
 def on_connect(client, userdata, flags, rc):
     provision_topic = "$provision/{}".format(device_id)
