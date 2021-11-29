@@ -25,12 +25,12 @@ except FileNotFoundError as exc:
 print("\nUsing IoT Connector ID: {}".format(connector_id))
 print("\nUsing Device ID: {}".format(device_id))
 
-host = "{}.m2.exosite-staging.com".format(connector_id)
+host = "{}.m2.exosite-staging.com".format(connector_id.strip())
 cert = "./Murano_Selfsigned_Root_CA.cer"
 # cert = "./DigiCertGlobalRootCA.cer"
 
 def on_connect(client, userdata, flags, rc):
-    provision_topic = "$provision/{}".format(device_id)
+    provision_topic = "$provision/{}".format(device_id.strip())
     client.publish(provision_topic, None, qos=0)
 
 def on_message(client, userdata, msg):
