@@ -8,7 +8,7 @@ import logging
 try:
     with open("connector_id.txt", "r") as connector_file:
         print("File 'connector_id.txt' found...")
-        connector_id = connector_file.read()
+        connector_id = connector_file.read().strip()
 except FileNotFoundError as exc:
     print("File 'connector_id.txt' not found...")
     exit()
@@ -17,7 +17,7 @@ except FileNotFoundError as exc:
 try:
     with open("device_id.txt", "r") as device_file:
         print("File 'device_id.txt' found...")
-        device_id = device_file.read()
+        device_id = device_file.read().strip()
 except FileNotFoundError as exc:
     print("File 'device_id.txt' not found...")
     exit()
@@ -25,12 +25,12 @@ except FileNotFoundError as exc:
 print("\nUsing IoT Connector ID: {}".format(connector_id))
 print("\nUsing Device ID: {}".format(device_id))
 
-host = "{}.m2.exosite-staging.com".format(connector_id.strip())
+host = "{}.m2.exosite-staging.com".format(connector_id)
 cert = "./Murano_Selfsigned_Root_CA.cer"
 # cert = "./DigiCertGlobalRootCA.cer"
 
 def on_connect(client, userdata, flags, rc):
-    provision_topic = "$provision/{}".format(device_id.strip())
+    provision_topic = "$provision/{}".format(device_id)
     client.publish(provision_topic, None, qos=0)
 
 def on_message(client, userdata, msg):
