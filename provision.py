@@ -4,18 +4,27 @@ import logging
 
 # logging.basicConfig(level=logging.DEBUG)
 
+# Get the IoT Connector ID
 try:
     with open("connector_id.txt", "r") as connector_file:
         print("File 'connector_id.txt' found...")
         connector_id = connector_file.read()
 except FileNotFoundError as exc:
     print("File 'connector_id.txt' not found...")
-    connector_id = input("Connector ID? ")
-    with open("connector_id.txt", "w") as connector_file:
-        connector_file.write(connector_id)
+    exit()
+
+# Get the Device ID
+try:
+    with open("device_id.txt", "r") as device_file:
+        print("File 'device_id.txt' found...")
+        device_id = device_file.read()
+except FileNotFoundError as exc:
+    print("File 'device_id.txt' not found...")
+    exit()
 
 print("\nUsing IoT Connector ID: {}".format(connector_id))
-device_id = input("Device ID? ")
+print("\nUsing Device ID: {}".format(connector_id))
+
 host = "{}.m2.exosite-staging.com".format(connector_id)
 cert = "./Murano_Selfsigned_Root_CA.cer"
 # cert = "./DigiCertGlobalRootCA.cer"
