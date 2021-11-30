@@ -31,7 +31,7 @@ cert = "./Murano_Selfsigned_Root_CA.cer"
 
 def on_connect(client, userdata, flags, rc):
     topic = "$resource/config_io"
-    value = '{"channels": {"brewing_status": {"display_name": "Brewing Status","description": "","properties": {"data_type": "BOOLEAN","controle": true}}}}'
+    value = '{"channels": {"brewing_status": {"display_name": "Brewing Status","description": "","properties": {"data_type": "BOOLEAN","control": true}}}, {"brewing_mode": {"display_name": "Brewing Mode","description": "","properties": {"data_type": "STRING","control": true}}}}'
 
     print("Publishing value '{}' to topic '{}'".format(value, topic))
     client.publish(topic, value, qos=0)
